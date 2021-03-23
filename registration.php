@@ -11,8 +11,8 @@
 					<h1><a href="#"><span class="highlight">University</span> Student Information</a></h1>
 					<nav>
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li><a href="#">About Us</a></li>
+							<li><a href="index.php">Home</a></li>
+							<li><a href="View_database.php">View Database</a></li>
 							
 							<li class="current"><a href="Registration.php">Registration</a></li>
 						</ul>

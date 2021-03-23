@@ -12,7 +12,18 @@ if(isset($_POST["reg"]))
 		$department=$_POST['department'];
 		$skils=$_POST['skils'];
 		
-		//$photo=$_FILES['photo']['name'];
+		$query=mysqli_query($con,"SELECT*FROM student_info Where email='$email'");
+		
+		//$result = mysqli_query($con, $query); 
+
+		
+			$row = mysqli_num_rows($query); 
+			
+		if($row >0)
+		{echo "Email id Already Use for #".$row;}
+		
+		else
+		{
 		$q = ("INSERT into student_info(Name,father_name,email,university,std_id,department,skills)
 				VALUES('$name','$father_name','$email','$university','$std_id','$department','$skils')");
 				
@@ -22,7 +33,10 @@ if(isset($_POST["reg"]))
 		{echo "Success";}
 		else
 		{echo "fail";}
+		
 		header("location:registration.php?OK=Insert Successfully");
+	
+		}
 	}
 	else
 	{echo " insertion fail";}

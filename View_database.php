@@ -1,11 +1,15 @@
 <?php
 
     require 'db_connection.php'; // For connetion
+	session_start();
+	
     $result = mysqli_query($con,"SELECT * FROM student_info"); /// Retriveing all data from database to show
     if(isset($_POST['reg']))
     {
         header("location:profile.php?go");
     }
+	
+
 
 
 ?>
@@ -18,6 +22,7 @@
 		<meta name="viewport" content="width=device=width">
 			<title>University Student Information | Welcome</title>
 				<link rel="stylesheet" type="text/css" href="style/style.css"/>
+				
 	</head>
     <body>
 	
@@ -31,6 +36,7 @@
 						
 							<li><a href="View_database.php">View Database</a></li>
 							<li class="current"><a href="Registration.php">Registration</a></li>
+							<li><a href="login.php">GOLD</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -51,7 +57,7 @@
                 <td><h3>ID</h3></td>
                 <td><h3>Full Name</h3></td>
                 <td><h3>Email</h3></td>
-                <td><h3>Action</h3></td>
+                <td><h3>View Profile</h3></td>
 				
             </tr>
             <?php
@@ -62,7 +68,8 @@
                 <td><?php echo $row["std_id"]; ?></td>
                 <td><?php echo $row["father_name"]; ?></td>
                 <td><?php echo $row["email"]; ?></td>
-                <td><input type="submit" name="reg" value="Profile"> </td>
+                <!--<td><input type="submit" name="reg" value="Profile"> </td>-->
+				<td><a href="Profile.php?std_id=<?php echo ($row["std_id"] ); ?> "><img src=" <?php echo $row['Photo'];  ?> " width="50" height="40"> </a></td>
             </tr>
             <?php
                 $i++;
